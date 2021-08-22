@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/style_cart.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <title>Food Delivery App | HomePage</title>
+</head>
+
+<body>
+
+    <div id="top">
+        <a href="homepage.html"> <img src="https://portfolio.shahbaazkyz.com/wp-content/uploads/2021/08/logoupdate.png"
+                alt="" class="logo"></a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <a href="#" onclick="rLogOut()">Log out</a>
+
+        </nav>
+        <img class="cart-icon cart-toggle" src="img/cart.png" alt="cart">
+        <span class="totalitems"></span>
+    </div>
+    <div class="heroSection">
+        <header>
+            <div class="container">
+
+
+            </div>
+        </header>
+        <div class="heroText">
+            <h1>Order Now!</h1>
+            <p>Town's Bestest & Qualified Food.</p>
+            <a href="#idStarter"> <button class="joinNow">Order now</button> </a>
+            <!-- <button>Know more</button> -->
+        </div>
+    </div>
+
+    <div class="menu" id="menu">
+        <h1 id="idStarter">Starter</h1>
+        <div class="starter items" id="starters"></div>
+        <div class="bgfix" id="idStarters">
+            <img src="img/lb.png" alt="">
+        </div>
+
+        <h1 id="idDessert">Dessert</h1>
+        <div class="dessert items" id="desserts"></div>
+        <div class="bgfix " id="idDesserts">
+
+            <img src="img/lb.png" alt="">
+        </div>
+
+        <h1 id="idBrunch">Brunch</h1>
+        <div class="brunch items" id="brunchs"></div>
+        <div class="bgfix " id="idBrunchs">
+            <img src="img/lb.png" alt="">
+        </div>
+
+        <h1 id="idDrink">Drink</h1>
+        <div class="drink items" id="drinks"></div>
+
+    </div>
+
+    <div class="cart-container">
+        <table class="cart">
+            <th>Product</th>
+            <th colspan="2">Price</th>
+        </table>
+        <table>
+            <tr>
+                <td class="total">Total</td>
+            </tr>
+        </table>
+        <div class="send-order">Send Order</div>
+
+    </div>
+
+
+    <script src="js/firebase.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/userAuth.js"></script>
+
+</body>
+
+</html>
