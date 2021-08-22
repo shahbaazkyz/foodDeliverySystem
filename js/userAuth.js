@@ -24,6 +24,10 @@ function uSignUp() {
 
 function uSignIn() {
   event.preventDefault();
+  if (uEmailS.value.length < 6) {
+    alert("Please Fill email Correctly!");
+    break;
+  }
   firebase
     .auth()
     .signInWithEmailAndPassword(uEmailS.value, uPassS.value)
