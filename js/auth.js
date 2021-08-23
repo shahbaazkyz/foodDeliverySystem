@@ -8,6 +8,7 @@ var rPassS = document.getElementById("rPassS");
 
 function rSignUp() {
   event.preventDefault();
+  localStorage.setItem("restaurantName", rName.value);
   firebase
     .auth()
     .createUserWithEmailAndPassword(rEmail.value, rPass.value)
@@ -38,26 +39,30 @@ function rSignUp() {
 
 function rSignIn() {
   event.preventDefault();
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(rEmailS.value, rPassS.value)
-    .then(() => {
-      localStorage.setItem("name", rEmailS.value);
-      alert("login Successfully");
-      window.location = "./admin.html";
-    })
-    .catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert(errorMessage);
-      console.log(errorMessage);
-    });
-}
 
-function rLogOut() {
-  e.preventDefault();
-  auth.signOut();
-  alert("User signed out!");
-  window.location = "./rSignIn.html";
+  firebase
+    .database()
+    .ref("Restaurants/")
+    .on("value", function checkRestaurant(data) {
+      if (data) {
+        $.each(data.val(), function (key, value) {
+          let rEmailDB = value["restaurantEmail"],
+            rNameDB = value["restaurantName"];
+
+          if (rEmailDB == rEmailS.value) {
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(rEmailS.value, rPassS.value)
+              .then(() => {
+                localStorage.setItem("restaurantName", rNameDB);
+                window.location = "./admin.html";
+              });
+          } else {
+            setTimeout(() => {
+              alert("You're not restaurant owner");
+            }, 1500);
+          }
+        });
+      }
+    });
 }

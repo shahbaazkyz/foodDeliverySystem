@@ -9,3 +9,9 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+function rLogOut() {
+  alert("Restaurant signed out!");
+  localStorage.clear();
+  window.location = "./rSignIn.html";
+}

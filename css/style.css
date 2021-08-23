@@ -317,21 +317,6 @@ Orders Page
     grid-column: 1/6;
 }
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.logou{
+    cursor: pointer;
+}

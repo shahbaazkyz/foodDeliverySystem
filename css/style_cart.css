@@ -75,7 +75,7 @@ MENU
 .menu
 {
     grid-column: 1/4;
-    margin-top: 428px;
+    margin-top: 555px;
     grid-row: 2;
 }
 
@@ -331,5 +331,9 @@ button.joinNow:hover {
 }
 
 #idBrunchs {
+    display: none;
+}
+
+#filerRestaurantHide {
     display: none;
 }

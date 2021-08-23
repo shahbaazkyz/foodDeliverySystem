@@ -3,6 +3,9 @@ var uEmail = document.getElementById("uEmail");
 var uEmailS = document.getElementById("uEmailS");
 var uPass = document.getElementById("uPass");
 var uPassS = document.getElementById("uPassS");
+var userName = document.getElementById("userName");
+var userCountry = document.getElementById("userCountry");
+var userCity = document.getElementById("userCity");
 
 function uSignUp() {
   event.preventDefault();
@@ -11,7 +14,19 @@ function uSignUp() {
     .createUserWithEmailAndPassword(uEmail.value, uPass.value)
     .then((result) => {
       alert("Welcome! You're Signed In");
-      window.location = "homepage.html";
+      let obj = {
+        UserName: userName.value,
+        UserEmail: uEmail.value,
+        UserCountry: userCountry.value,
+        UsertCity: userCity.value,
+      };
+      firebase
+        .database()
+        .ref("Users of Website/")
+        .push(obj, () => {
+          console.log("Save to Firebase");
+          window.location = "homepage.html";
+        });
     })
 
     .catch(function (error) {
@@ -26,7 +41,6 @@ function uSignIn() {
   event.preventDefault();
   if (uEmailS.value.length < 6) {
     alert("Please Fill email Correctly!");
-    break;
   }
   firebase
     .auth()
