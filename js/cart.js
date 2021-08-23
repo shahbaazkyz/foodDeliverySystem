@@ -210,6 +210,7 @@ SENDING ORDERS TO DB
                 $(".cart").append(
                   '<tr><td colspan="3">Order Sent Successfully</td></tr>'
                 );
+                window.location.reload();
                 setTimeout(function () {
                   $(".cart-toggle").click();
                 }, 2500);

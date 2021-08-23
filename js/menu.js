@@ -46,6 +46,14 @@ if (!localStorage.getItem("restaurantName")) {
         image = $("[name=image]").val().slice(12),
         newid = beforeQuery.push();
 
+      const file = $("[name=image]").get(0).files[0];
+      console.log(file);
+
+      firebase
+        .storage()
+        .ref("images/" + file.name)
+        .put(file);
+
       var resName = localStorage.getItem("restaurantName");
       /**    console.log(category);
            console.log(title);
