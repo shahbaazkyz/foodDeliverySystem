@@ -2,6 +2,7 @@ if (!localStorage.getItem("restaurantName")) {
   alert("Please Sign in First");
   window.location = "rSignIn.html";
 } else {
+  $("#resTitle").html(localStorage.getItem("restaurantName"));
   $(document).ready(function () {
     const database = firebase.database();
     const beforeQuery = database.ref("menu/");
@@ -96,14 +97,17 @@ if (!localStorage.getItem("restaurantName")) {
           brunch = "",
           drink = "";
 
+        let resDName = localStorage.getItem("restaurantName");
+
         $.each(data.val(), function (key, value) {
           let id = key,
             category = value["category"],
             title = value["title"],
             price = value["price"],
-            image = value["image"];
+            image = value["image"],
+            resName = value["restaurant"];
 
-          if (category == "starter") {
+          if (category == "starter" && resName == resDName) {
             starter += `<div class="product-box">
                             <div id = ${key} > 
                             <img class ="image" src=${image} >
@@ -115,7 +119,7 @@ if (!localStorage.getItem("restaurantName")) {
                             
                             </div>
                             </div>`;
-          } else if (category == "dessert") {
+          } else if (category == "dessert" && resName == resDName) {
             dessert += `<div class="product-box">
                             <div id = ${key} >
                             <img class ="image" src=${image} >
@@ -127,7 +131,7 @@ if (!localStorage.getItem("restaurantName")) {
                             
                             </div>
                             </div>`;
-          } else if (category == "brunch") {
+          } else if (category == "brunch" && resName == resDName) {
             brunch += `<div class="product-box">
                             <div id = ${key} >
                             <img class ="image" src=${image} >
@@ -139,7 +143,7 @@ if (!localStorage.getItem("restaurantName")) {
                             
                             </div>
                             </div>`;
-          } else if (category == "drink") {
+          } else if (category == "drink" && resName == resDName) {
             drink += `<div class="product-box">
                         <div id = ${key} >
                         <img class ="image" src=${image} >
