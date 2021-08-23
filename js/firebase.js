@@ -11,7 +11,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function rLogOut() {
-  alert("Restaurant signed out!");
   localStorage.clear();
   window.location = "./rSignIn.html";
+  alert("Restaurant signed out!");
 }

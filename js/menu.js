@@ -1,5 +1,7 @@
 if (!localStorage.getItem("restaurantName")) {
-  alert("Please Sign in First");
+  setTimeout(() => {
+    alert("Please Sign in First");
+  }, 5000);
   window.location = "rSignIn.html";
 } else {
   $("#resTitle").html(localStorage.getItem("restaurantName"));
